@@ -1,0 +1,84 @@
+name: ServerRewards
+version: 1.0
+main: me.bebo.serverRewards.ServerRewards
+api-version: "1.21"
+commands:
+  points:
+    description: Check your current points balance
+    usage: /points
+    permission: serverrewards.points
+  reward:
+    description: Claim your rewards
+    usage: /reward <kill|mine|build>
+    permission: serverrewards.reward
+  rewards:
+    description: Open rewards menu
+    usage: /rewards
+    permission: serverrewards.rewards
+  convert:
+    description: Convert points to money
+    usage: /convert <type> <amount>
+    permission: serverrewards.convert
+  stats:
+    description: View your stats
+    usage: /stats [player]
+    permission: serverrewards.stats
+  top:
+    description: View top players
+    usage: /top <kill|mine|build|total>
+    permission: serverrewards.top
+  setpoints:
+    description: Set player points (Admin)
+    usage: /setpoints <player> <type> <amount>
+    permission: serverrewards.admin
+  resetpoints:
+    description: Reset player points (Admin)
+    usage: /resetpoints <player> <type>
+    permission: serverrewards.admin
+  reloadrewards:
+    description: Reload the plugin configuration
+    usage: /reloadrewards
+    permission: serverrewards.reload
+  serverrewards:
+    description: Plugin info
+    usage: /serverrewards
+    permission: serverrewards.info
+  rewardshelp:
+    description: Show help
+    usage: /rewardshelp
+    permission: serverrewards.help
+
+permissions:
+  serverrewards.points:
+    description: Allows players to check their points
+    default: true
+  serverrewards.reward:
+    description: Allows players to claim rewards
+    default: true
+  serverrewards.rewards:
+    description: Allows players to open rewards menu
+    default: true
+  serverrewards.convert:
+    description: Allows players to convert points
+    default: true
+  serverrewards.stats:
+    description: Allows players to view stats
+    default: true
+  serverrewards.top:
+    description: Allows players to view top players
+    default: true
+  serverrewards.info:
+    description: Allows players to view plugin info
+    default: true
+  serverrewards.help:
+    description: Allows players to view help
+    default: true
+  serverrewards.admin:
+    description: Admin commands
+    default: op
+  serverrewards.reload:
+    description: Allows reloading the plugin config
+    default: op
+  serverrewards.stats.others:
+    description: Allows viewing others' stats
+    default: op

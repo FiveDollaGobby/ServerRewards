@@ -1,0 +1,1225 @@
+# ServerRewards Ultimate Config
+# Version 4.2 - 75+ Rewards | 30-Min Cooldown | Hourly Challenges
+# Full Configuration File
+
+###########################
+### POINTS CONFIGURATION ###
+###########################
+
+points:
+  kill:
+    ZOMBIE: 1
+    SKELETON: 1
+    CREEPER: 2
+    SPIDER: 1
+    ENDERMAN: 3
+    BLAZE: 2
+    WITCH: 2
+    WITHER: 20
+    ENDER_DRAGON: 50
+    PLAYER: 10
+    default: 1
+
+  mine:
+    DIAMOND_ORE: 3
+    IRON_ORE: 2
+    GOLD_ORE: 2
+    EMERALD_ORE: 3
+    COAL_ORE: 1
+    ANCIENT_DEBRIS: 5
+    NETHER_QUARTZ_ORE: 1
+    NETHER_GOLD_ORE: 1
+    default: 0
+
+  build:
+    DIAMOND_BLOCK: 3
+    GOLD_BLOCK: 2
+    IRON_BLOCK: 2
+    EMERALD_BLOCK: 2
+    BEACON: 10
+    ENCHANTING_TABLE: 5
+    default: 1
+
+#############################
+### REWARDS SHOP SETTINGS ###
+#############################
+
+rewards_shop:
+  required_points: 100
+  cooldown_hours: 0.5  # 30-MINUTE COOLDOWN
+  reset_points: false
+
+  gui:
+    title: "&6&lQUICK &e&lREWARDS"
+    size: 54
+
+    categories:
+      starter:
+        name: "&aStarter"
+        slot: 10
+        material: CHEST
+      tools:
+        name: "&bTools"
+        slot: 12
+        material: DIAMOND_PICKAXE
+      combat:
+        name: "&cCombat"
+        slot: 14
+        material: IRON_SWORD
+      special:
+        name: "&dSpecial"
+        slot: 16
+        material: NETHER_STAR
+      building:
+        name: "&eBuilding"
+        slot: 28
+        material: BRICKS
+      magic:
+        name: "&5Magic"
+        slot: 30
+        material: ENCHANTED_BOOK
+      transport:
+        name: "&9Transport"
+        slot: 32
+        material: SADDLE
+      food:
+        name: "&6Food"
+        slot: 34
+        material: GOLDEN_APPLE
+      mobs:
+        name: "&2Mobs"
+        slot: 36
+        material: EGG
+      decor:
+        name: "&dDecor"
+        slot: 38
+        material: PAINTING
+      potions:
+        name: "&1Potions"
+        slot: 40
+        material: POTION
+      seasonal:
+        name: "&cSeasonal"
+        slot: 42
+        material: PUMPKIN
+
+    items:
+      # ===== STARTER KITS (5) =====
+      quick_kit:
+        category: starter
+        slot: 10
+        material: CHEST
+        name: "&aQuick Start"
+        lore:
+          - "&7Iron gear + food"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a100 Points"
+        price: 100
+        commands:
+          - "give {player} iron_helmet 1"
+          - "give {player} stone_sword 1"
+          - "give {player} cooked_beef 32"
+
+      survival_kit:
+        category: starter
+        slot: 11
+        material: CHEST
+        name: "&aSurvival Pack"
+        lore:
+          - "&7Full leather armor + tools"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a150 Points"
+        price: 150
+        commands:
+          - "give {player} leather_helmet 1"
+          - "give {player} leather_chestplate 1"
+          - "give {player} leather_leggings 1"
+          - "give {player} leather_boots 1"
+          - "give {player} stone_pickaxe 1"
+          - "give {player} stone_axe 1"
+          - "give {player} stone_shovel 1"
+
+      miner_kit:
+        category: starter
+        slot: 12
+        material: IRON_PICKAXE
+        name: "&7Miner's Kit"
+        lore:
+          - "&7Iron pick + torches"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a120 Points"
+        price: 120
+        commands:
+          - "give {player} iron_pickaxe 1"
+          - "give {player} torch 64"
+
+      farmer_kit:
+        category: starter
+        slot: 13
+        material: IRON_HOE
+        name: "&2Farmer's Kit"
+        lore:
+          - "&7Hoe + seeds + bonemeal"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a110 Points"
+        price: 110
+        commands:
+          - "give {player} iron_hoe 1"
+          - "give {player} wheat_seeds 32"
+          - "give {player} bone_meal 16"
+
+      explorer_kit:
+        category: starter
+        slot: 14
+        material: MAP
+        name: "&6Explorer's Kit"
+        lore:
+          - "&7Map + food + boat"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a130 Points"
+        price: 130
+        commands:
+          - "give {player} filled_map 1"
+          - "give {player} cooked_beef 16"
+          - "give {player} oak_boat 1"
+
+      # ===== TOOLS (8) =====
+      fast_pick:
+        category: tools
+        slot: 19
+        material: DIAMOND_PICKAXE
+        name: "&bFast Miner"
+        lore:
+          - "&7Efficiency III"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} diamond_pickaxe{Enchantments:[{id:efficiency,lvl:3}]} 1"
+
+      lumberjack:
+        category: tools
+        slot: 20
+        material: DIAMOND_AXE
+        name: "&6Lumberjack"
+        lore:
+          - "&7Efficiency III + Unbreaking II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} diamond_axe{Enchantments:[{id:efficiency,lvl:3},{id:unbreaking,lvl:2}]} 1"
+
+      shovel_expert:
+        category: tools
+        slot: 21
+        material: DIAMOND_SHOVEL
+        name: "&7Excavator"
+        lore:
+          - "&7Efficiency III + Unbreaking II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} diamond_shovel{Enchantments:[{id:efficiency,lvl:3},{id:unbreaking,lvl:2}]} 1"
+
+      silk_touch:
+        category: tools
+        slot: 22
+        material: DIAMOND_PICKAXE
+        name: "&bSilk Touch"
+        lore:
+          - "&7Silk Touch I"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} diamond_pickaxe{Enchantments:[{id:silk_touch,lvl:1}]} 1"
+
+      fortune:
+        category: tools
+        slot: 23
+        material: DIAMOND_PICKAXE
+        name: "&6Fortune III"
+        lore:
+          - "&7Fortune III"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} diamond_pickaxe{Enchantments:[{id:fortune,lvl:3}]} 1"
+
+      mending_tool:
+        category: tools
+        slot: 24
+        material: DIAMOND_PICKAXE
+        name: "&aMending Pick"
+        lore:
+          - "&7Mending + Efficiency III"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} diamond_pickaxe{Enchantments:[{id:efficiency,lvl:3},{id:mending,lvl:1}]} 1"
+
+      all_tools:
+        category: tools
+        slot: 25
+        material: DIAMOND_PICKAXE
+        name: "&bTool Set"
+        lore:
+          - "&7Diamond pick, axe, shovel"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a600 Points"
+        price: 600
+        commands:
+          - "give {player} diamond_pickaxe 1"
+          - "give {player} diamond_axe 1"
+          - "give {player} diamond_shovel 1"
+
+      netherite_upgrade:
+        category: tools
+        slot: 28
+        material: NETHERITE_INGOT
+        name: "&4Netherite Upgrade"
+        lore:
+          - "&71 Netherite Ingot"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a750 Points"
+        price: 750
+        commands:
+          - "give {player} netherite_ingot 1"
+
+      # ===== COMBAT (8) =====
+      quick_pvp:
+        category: combat
+        slot: 29
+        material: DIAMOND_SWORD
+        name: "&cQuick Strike"
+        lore:
+          - "&7Sharpness III"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} diamond_sword{Enchantments:[{id:sharpness,lvl:3}]} 1"
+
+      archer:
+        category: combat
+        slot: 30
+        material: BOW
+        name: "&6Precision Bow"
+        lore:
+          - "&7Power III + Infinity"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} bow{Enchantments:[{id:power,lvl:3},{id:infinity,lvl:1}]} 1"
+          - "give {player} arrow 1"
+
+      tank:
+        category: combat
+        slot: 31
+        material: DIAMOND_CHESTPLATE
+        name: "&bTank Armor"
+        lore:
+          - "&7Protection III Chestplate"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} diamond_chestplate{Enchantments:[{id:protection,lvl:3}]} 1"
+
+      full_armor:
+        category: combat
+        slot: 32
+        material: DIAMOND_HELMET
+        name: "&bFull Diamond Armor"
+        lore:
+          - "&7Full set (no enchantments)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a800 Points"
+        price: 800
+        commands:
+          - "give {player} diamond_helmet 1"
+          - "give {player} diamond_chestplate 1"
+          - "give {player} diamond_leggings 1"
+          - "give {player} diamond_boots 1"
+
+      fire_aspect:
+        category: combat
+        slot: 33
+        material: DIAMOND_SWORD
+        name: "&cFlaming Sword"
+        lore:
+          - "&7Fire Aspect II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a550 Points"
+        price: 550
+        commands:
+          - "give {player} diamond_sword{Enchantments:[{id:fire_aspect,lvl:2}]} 1"
+
+      knockback:
+        category: combat
+        slot: 34
+        material: DIAMOND_SWORD
+        name: "&aKnockback Sword"
+        lore:
+          - "&7Knockback II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} diamond_sword{Enchantments:[{id:knockback,lvl:2}]} 1"
+
+      arrows:
+        category: combat
+        slot: 37
+        material: ARROW
+        name: "&fArrow Bundle"
+        lore:
+          - "&764 Arrows"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a150 Points"
+        price: 150
+        commands:
+          - "give {player} arrow 64"
+
+      golden_apples:
+        category: combat
+        slot: 38
+        material: GOLDEN_APPLE
+        name: "&6Golden Apples"
+        lore:
+          - "&73 Golden Apples"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} golden_apple 3"
+
+      # ===== SPECIAL (10) =====
+      mini_elytra:
+        category: special
+        slot: 39
+        material: ELYTRA
+        name: "&5Mini Elytra"
+        lore:
+          - "&7Elytra + 16 rockets"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a800 Points"
+        price: 800
+        commands:
+          - "give {player} elytra 1"
+          - "give {player} firework_rocket 16"
+
+      ender_chest:
+        category: special
+        slot: 40
+        material: ENDER_CHEST
+        name: "&5Portable Storage"
+        lore:
+          - "&7Ender Chest + Silk Touch Pick"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a600 Points"
+        price: 600
+        commands:
+          - "give {player} ender_chest 1"
+          - "give {player} diamond_pickaxe{Enchantments:[{id:silk_touch,lvl:1}]} 1"
+
+      shulker_box:
+        category: special
+        slot: 41
+        material: SHULKER_BOX
+        name: "&5Shulker Box"
+        lore:
+          - "&71 Shulker Box (random color)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a700 Points"
+        price: 700
+        commands:
+          - "give {player} shulker_box 1"
+
+      beacon:
+        category: special
+        slot: 42
+        material: BEACON
+        name: "&bBeacon"
+        lore:
+          - "&71 Beacon"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a1000 Points"
+        price: 1000
+        commands:
+          - "give {player} beacon 1"
+
+      totem:
+        category: special
+        slot: 43
+        material: TOTEM_OF_UNDYING
+        name: "&eTotem of Undying"
+        lore:
+          - "&71 Totem"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a750 Points"
+        price: 750
+        commands:
+          - "give {player} totem_of_undying 1"
+
+      nether_star:
+        category: special
+        slot: 44
+        material: NETHER_STAR
+        name: "&dNether Star"
+        lore:
+          - "&71 Nether Star"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a900 Points"
+        price: 900
+        commands:
+          - "give {player} nether_star 1"
+
+      dragon_egg:
+        category: special
+        slot: 45
+        material: DRAGON_EGG
+        name: "&5Dragon Egg"
+        lore:
+          - "&71 Dragon Egg"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a1200 Points"
+        price: 1200
+        commands:
+          - "give {player} dragon_egg 1"
+
+      conduit:
+        category: special
+        slot: 46
+        material: CONDUIT
+        name: "&bConduit"
+        lore:
+          - "&71 Conduit"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a850 Points"
+        price: 850
+        commands:
+          - "give {player} conduit 1"
+
+      trident:
+        category: special
+        slot: 47
+        material: TRIDENT
+        name: "&9Trident"
+        lore:
+          - "&71 Trident"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a650 Points"
+        price: 650
+        commands:
+          - "give {player} trident 1"
+
+      name_tag:
+        category: special
+        slot: 48
+        material: NAME_TAG
+        name: "&fName Tag"
+        lore:
+          - "&73 Name Tags"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} name_tag 3"
+
+      # ===== BUILDING (5) =====
+      quick_build:
+        category: building
+        slot: 49
+        material: OAK_PLANKS
+        name: "&eQuick Build"
+        lore:
+          - "&764 Planks + 64 Stone"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} oak_planks 64"
+          - "give {player} stone 64"
+
+      terraformer:
+        category: building
+        slot: 50
+        material: GRASS_BLOCK
+        name: "&2Terraformer"
+        lore:
+          - "&764 Dirt + 64 Sand + 64 Gravel"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} dirt 64"
+          - "give {player} sand 64"
+          - "give {player} gravel 64"
+
+      glass_builder:
+        category: building
+        slot: 51
+        material: GLASS
+        name: "&bGlass Builder"
+        lore:
+          - "&764 Glass + 16 Glass Panes"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} glass 64"
+          - "give {player} glass_pane 16"
+
+      concrete_maker:
+        category: building
+        slot: 52
+        material: WHITE_CONCRETE
+        name: "&fConcrete Pack"
+        lore:
+          - "&764 Concrete (random colors)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} white_concrete 16"
+          - "give {player} light_gray_concrete 16"
+          - "give {player} gray_concrete 16"
+          - "give {player} black_concrete 16"
+
+      wool_bundle:
+        category: building
+        slot: 53
+        material: WHITE_WOOL
+        name: "&fWool Bundle"
+        lore:
+          - "&764 Wool (random colors)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} white_wool 16"
+          - "give {player} light_gray_wool 16"
+          - "give {player} gray_wool 16"
+          - "give {player} black_wool 16"
+
+      # ===== MAGIC (5) =====
+      enchanting_set:
+        category: magic
+        slot: 19
+        material: ENCHANTING_TABLE
+        name: "&5Enchanter's Kit"
+        lore:
+          - "&7Enchant Table + 30 Lapis"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} enchanting_table 1"
+          - "give {player} lapis_lazuli 30"
+
+      xp_bottles:
+        category: magic
+        slot: 20
+        material: EXPERIENCE_BOTTLE
+        name: "&aXP Boost"
+        lore:
+          - "&716 XP Bottles"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} experience_bottle 16"
+
+      potion_master:
+        category: magic
+        slot: 21
+        material: BREWING_STAND
+        name: "&1Potion Master"
+        lore:
+          - "&7Brewing Stand + Ingredients"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} brewing_stand 1"
+          - "give {player} nether_wart 16"
+          - "give {player} blaze_powder 8"
+          - "give {player} ghast_tear 4"
+
+      enchanted_book:
+        category: magic
+        slot: 22
+        material: ENCHANTED_BOOK
+        name: "&dRandom Enchanted Book"
+        lore:
+          - "&71 Random Enchanted Book"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} enchanted_book{StoredEnchantments:[{id:sharpness,lvl:1}]} 1"
+
+      end_crystals:
+        category: magic
+        slot: 23
+        material: END_CRYSTAL
+        name: "&5End Crystals"
+        lore:
+          - "&74 End Crystals"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a600 Points"
+        price: 600
+        commands:
+          - "give {player} end_crystal 4"
+
+      # ===== TRANSPORT (5) =====
+      horse_set:
+        category: transport
+        slot: 24
+        material: SADDLE
+        name: "&6Horse Rider"
+        lore:
+          - "&7Saddle + Golden Carrot"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} saddle 1"
+          - "give {player} golden_carrot 5"
+
+      minecart:
+        category: transport
+        slot: 25
+        material: MINECART
+        name: "&8Minecart"
+        lore:
+          - "&73 Minecarts + 16 Rails"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} minecart 3"
+          - "give {player} rail 16"
+
+      powered_rail:
+        category: transport
+        slot: 26
+        material: POWERED_RAIL
+        name: "&ePowered Rails"
+        lore:
+          - "&716 Powered Rails"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} powered_rail 16"
+
+      elytra_rockets:
+        category: transport
+        slot: 27
+        material: FIREWORK_ROCKET
+        name: "&eRocket Bundle"
+        lore:
+          - "&764 Rockets"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} firework_rocket 64"
+
+      boat_bundle:
+        category: transport
+        slot: 28
+        material: OAK_BOAT
+        name: "&6Boat Bundle"
+        lore:
+          - "&73 Boats (random types)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} oak_boat 1"
+          - "give {player} birch_boat 1"
+          - "give {player} spruce_boat 1"
+
+      # ===== FOOD (5) =====
+      feast:
+        category: food
+        slot: 29
+        material: COOKED_BEEF
+        name: "&6Grand Feast"
+        lore:
+          - "&764 Steak + 32 Bread"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} cooked_beef 64"
+          - "give {player} bread 32"
+
+      golden_feast:
+        category: food
+        slot: 30
+        material: GOLDEN_CARROT
+        name: "&6Golden Feast"
+        lore:
+          - "&716 Golden Carrots"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} golden_carrot 16"
+
+      cake:
+        category: food
+        slot: 31
+        material: CAKE
+        name: "&fCake"
+        lore:
+          - "&73 Cakes"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} cake 3"
+
+      pumpkin_pie:
+        category: food
+        slot: 32
+        material: PUMPKIN_PIE
+        name: "&6Pumpkin Pie"
+        lore:
+          - "&764 Pumpkin Pies"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} pumpkin_pie 64"
+
+      suspicious_stew:
+        category: food
+        slot: 33
+        material: SUSPICIOUS_STEW
+        name: "&dSuspicious Stew"
+        lore:
+          - "&73 Random Stews"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} suspicious_stew 3"
+
+      # ===== MOBS (5) =====
+      animal_breeder:
+        category: mobs
+        slot: 34
+        material: WHEAT
+        name: "&aAnimal Breeder"
+        lore:
+          - "&764 Wheat + 64 Seeds"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} wheat 64"
+          - "give {player} wheat_seeds 64"
+
+      spawn_eggs:
+        category: mobs
+        slot: 35
+        material: EGG
+        name: "&fSpawn Eggs"
+        lore:
+          - "&73 Random Mob Eggs"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} cow_spawn_egg 1"
+          - "give {player} pig_spawn_egg 1"
+          - "give {player} sheep_spawn_egg 1"
+
+      horse_egg:
+        category: mobs
+        slot: 36
+        material: HORSE_SPAWN_EGG
+        name: "&6Horse Egg"
+        lore:
+          - "&71 Horse Spawn Egg"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} horse_spawn_egg 1"
+
+      villager_egg:
+        category: mobs
+        slot: 37
+        material: VILLAGER_SPAWN_EGG
+        name: "&aVillager Egg"
+        lore:
+          - "&71 Villager Spawn Egg"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} villager_spawn_egg 1"
+
+      iron_golem_egg:
+        category: mobs
+        slot: 38
+        material: IRON_GOLEM_SPAWN_EGG
+        name: "&7Iron Golem Egg"
+        lore:
+          - "&71 Iron Golem Spawn Egg"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a600 Points"
+        price: 600
+        commands:
+          - "give {player} iron_golem_spawn_egg 1"
+
+      # ===== DECOR (5) =====
+      interior_designer:
+        category: decor
+        slot: 39
+        material: PAINTING
+        name: "&dInterior Pack"
+        lore:
+          - "&716 Paintings + 16 Item Frames"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} painting 16"
+          - "give {player} item_frame 16"
+
+      flower_power:
+        category: decor
+        slot: 40
+        material: SUNFLOWER
+        name: "&dFlower Power"
+        lore:
+          - "&764 Flowers (random types)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} sunflower 16"
+          - "give {player} rose_bush 16"
+          - "give {player} lilac 16"
+          - "give {player} peony 16"
+
+      banner_designer:
+        category: decor
+        slot: 41
+        material: WHITE_BANNER
+        name: "&fBanner Designer"
+        lore:
+          - "&73 Blank Banners + Dyes"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} white_banner 3"
+          - "give {player} black_dye 8"
+          - "give {player} red_dye 8"
+          - "give {player} blue_dye 8"
+
+      candle_set:
+        category: decor
+        slot: 42
+        material: CANDLE
+        name: "&eCandle Set"
+        lore:
+          - "&716 Candles (random colors)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} white_candle 4"
+          - "give {player} red_candle 4"
+          - "give {player} blue_candle 4"
+          - "give {player} green_candle 4"
+
+      potted_plants:
+        category: decor
+        slot: 43
+        material: FLOWER_POT
+        name: "&aPotted Plants"
+        lore:
+          - "&78 Flower Pots + Plants"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} flower_pot 8"
+          - "give {player} cactus 8"
+          - "give {player} bamboo 8"
+
+      # ===== POTIONS (5) =====
+      healing_potions:
+        category: potions
+        slot: 44
+        material: POTION
+        name: "&cHealing Potions"
+        lore:
+          - "&73 Instant Health II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a350 Points"
+        price: 350
+        commands:
+          - "give {player} potion{Potion:\"minecraft:strong_healing\"} 3"
+
+      speed_potions:
+        category: potions
+        slot: 45
+        material: POTION
+        name: "&bSpeed Potions"
+        lore:
+          - "&73 Speed II (8:00)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} potion{Potion:\"minecraft:long_swiftness\"} 3"
+
+      strength_potions:
+        category: potions
+        slot: 46
+        material: POTION
+        name: "&4Strength Potions"
+        lore:
+          - "&73 Strength II (8:00)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a400 Points"
+        price: 400
+        commands:
+          - "give {player} potion{Potion:\"minecraft:long_strength\"} 3"
+
+      invisibility_potions:
+        category: potions
+        slot: 47
+        material: POTION
+        name: "&fInvisibility Potions"
+        lore:
+          - "&73 Invisibility (8:00)"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a450 Points"
+        price: 450
+        commands:
+          - "give {player} potion{Potion:\"minecraft:long_invisibility\"} 3"
+
+      splash_potions:
+        category: potions
+        slot: 48
+        material: SPLASH_POTION
+        name: "&dSplash Potions"
+        lore:
+          - "&73 Splash Healing II"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a500 Points"
+        price: 500
+        commands:
+          - "give {player} splash_potion{Potion:\"minecraft:strong_healing\"} 3"
+
+      # ===== SEASONAL (5) =====
+      winter_set:
+        category: seasonal
+        slot: 49
+        material: SNOWBALL
+        name: "&bWinter Fun"
+        lore:
+          - "&764 Snowballs + 16 Snow Blocks"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} snowball 64"
+          - "give {player} snow_block 16"
+
+      halloween:
+        category: seasonal
+        slot: 50
+        material: JACK_O_LANTERN
+        name: "&6Halloween"
+        lore:
+          - "&716 Pumpkins + 16 Jack O'Lanterns"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} pumpkin 16"
+          - "give {player} jack_o_lantern 16"
+
+      christmas:
+        category: seasonal
+        slot: 51
+        material: CHEST
+        name: "&cChristmas Gift"
+        lore:
+          - "&7Random Christmas Items"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a300 Points"
+        price: 300
+        commands:
+          - "give {player} snow_block 32"
+          - "give {player} spruce_log 32"
+          - "give {player} redstone_lamp 16"
+
+      easter:
+        category: seasonal
+        slot: 52
+        material: EGG
+        name: "&dEaster Basket"
+        lore:
+          - "&764 Eggs + 16 Dyed Wool"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a250 Points"
+        price: 250
+        commands:
+          - "give {player} egg 64"
+          - "give {player} white_wool 16"
+          - "give {player} pink_wool 16"
+
+      summer:
+        category: seasonal
+        slot: 53
+        material: SAND
+        name: "&eSummer Fun"
+        lore:
+          - "&764 Sand + 16 Coconuts"
+          - "&7Cooldown: &a30 minutes"
+          - ""
+          - "&eCost: &a200 Points"
+        price: 200
+        commands:
+          - "give {player} sand 64"
+          - "give {player} cocoa_beans 16"
+
+###########################
+### CHALLENGES SYSTEM ###
+###########################
+
+challenges:
+  hourly:  # 30-MINUTE COOLDOWN CHALLENGES
+    wood_collector:
+      name: "&aQuick Lumber"
+      type: mine
+      material: "OAK_LOG"
+      goal: 32  # Reduced for faster completion
+      reward_points: 50
+    monster_slayer:
+      name: "&cFast Slayer"
+      type: kill
+      material: "ZOMBIE|SKELETON"
+      goal: 15  # Reduced for faster completion
+      reward_points: 75
+
+  daily:  # Traditional daily challenges
+    diamond_miner:
+      name: "&bDiamond Miner"
+      type: mine
+      material: "DIAMOND_ORE"
+      goal: 5
+      reward_points: 200
+
+#######################
+### MESSAGE SETTINGS ###
+#######################
+
+messages:
+  points_earned: "&a+{points} points! &e(Next reward in 30min)"
+  shop:
+    welcome: "&6Rewards refresh every 30 minutes!"
+    purchase_success: "&aEnjoy! &7(Next in 30min)"
+    cooldown: "&eNext reward in: &a{time}"
+    insufficient_points: "&cNeed {needed} more points!"
+
+#######################
+### PLUGIN SETTINGS ###
+#######################
+
+settings:
+  auto_save:
+    enabled: true
+    interval: 300  # 5 minutes
+  debug:
+    enabled: false
+  database:
+    type: sqlite
