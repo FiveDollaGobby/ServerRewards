@@ -1,13 +1,13 @@
 package me.bebo.serverRewards;
 
 import org.bukkit.entity.Player;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Set;
 import java.util.UUID;
 
 public class PlayerDataManager {
     private final ServerRewards plugin;
-    private final HashMap<UUID, PlayerData> playerDataMap = new HashMap<>();
+    private final ConcurrentHashMap<UUID, PlayerData> playerDataMap = new ConcurrentHashMap<>();
 
     public PlayerDataManager(ServerRewards plugin) {
         this.plugin = plugin;

@@ -1,7 +1,7 @@
 package me.bebo.serverRewards.commands;
 
 import me.bebo.serverRewards.ServerRewards;
-import me.bebo.serverRewards.PlayerData;  // Add this import
+import me.bebo.serverRewards.PlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

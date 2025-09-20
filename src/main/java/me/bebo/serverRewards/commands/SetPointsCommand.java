@@ -39,29 +39,45 @@ public class SetPointsCommand implements CommandExecutor {
 
         try {
             amount = Integer.parseInt(args[2]);
+            
+            if (amount < 0) {
+                sender.sendMessage(ChatColor.RED + "Amount cannot be negative!");
+                return true;
+            }
+            if (amount > Integer.MAX_VALUE / 2) {
+                sender.sendMessage(ChatColor.RED + "Amount too large! Maximum: " + (Integer.MAX_VALUE / 2));
+                return true;
+            }
         } catch (NumberFormatException e) {
-            sender.sendMessage(ChatColor.RED + "Invalid amount!");
+            sender.sendMessage(ChatColor.RED + "Invalid amount! Please enter a valid number.");
             return true;
         }
 
         PlayerData data = plugin.getPlayerDataManager().getPlayerData(target);
 
-        switch (type) {
-            case "kill":
-                data.setKillPoints(amount);
-                break;
-            case "mine":
-                data.setMinePoints(amount);
-                break;
-            case "build":
-                data.setBuildPoints(amount);
-                break;
-            default:
-                sender.sendMessage(ChatColor.RED + "Invalid type. Use kill, mine or build");
-                return true;
-        }
+        try {
+            switch (type) {
+                case "kill":
+                    data.setKillPoints(amount);
+                    break;
+                case "mine":
+                    data.setMinePoints(amount);
+                    break;
+                case "build":
+                    data.setBuildPoints(amount);
+                    break;
+                default:
+                    sender.sendMessage(ChatColor.RED + "Invalid type. Use kill, mine or build");
+                    return true;
+            }
 
-        sender.sendMessage(ChatColor.GREEN + "Set " + target.getName() + "'s " + type + " points to " + amount);
+            sender.sendMessage(ChatColor.GREEN + "Set " + target.getName() + "'s " + type + " points to " + amount);
+        } catch (IllegalArgumentException e) {
+            sender.sendMessage(ChatColor.RED + "Error: " + e.getMessage());
+        } catch (Exception e) {
+            sender.sendMessage(ChatColor.RED + "An unexpected error occurred: " + e.getMessage());
+            plugin.getLogger().warning("Error in SetPointsCommand: " + e.getMessage());
+        }
         return true;
     }
 }

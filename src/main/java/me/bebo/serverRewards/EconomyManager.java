@@ -1,13 +1,13 @@
 package me.bebo.serverRewards;
 
 import org.bukkit.entity.Player;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class EconomyManager {
     private final ServerRewards plugin;
-    private final Map<UUID, Double> playerBalances = new HashMap<>();
+    private final Map<UUID, Double> playerBalances = new ConcurrentHashMap<>();
 
     public EconomyManager(ServerRewards plugin) {
         this.plugin = plugin;
@@ -34,7 +34,7 @@ public class EconomyManager {
     }
 
     public Map<UUID, Double> getBalances() {
-        return new HashMap<>(playerBalances);
+        return new ConcurrentHashMap<>(playerBalances);
     }
 
     public void setBalance(UUID uuid, double balance) {

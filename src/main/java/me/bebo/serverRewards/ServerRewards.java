@@ -88,7 +88,6 @@ public final class ServerRewards extends JavaPlugin {
         }
     }
 
-    // Getters
     public EconomyManager getEconomyManager() { return economyManager; }
     public PlayerDataManager getPlayerDataManager() { return playerDataManager; }
     public RewardManager getRewardManager() { return rewardManager; }

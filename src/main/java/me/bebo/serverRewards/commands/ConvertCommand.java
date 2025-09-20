@@ -38,8 +38,12 @@ public class ConvertCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "Amount must be positive!");
                 return true;
             }
+            if (amount > Integer.MAX_VALUE / 2) {
+                player.sendMessage(ChatColor.RED + "Amount too large! Maximum: " + (Integer.MAX_VALUE / 2));
+                return true;
+            }
         } catch (NumberFormatException e) {
-            player.sendMessage(ChatColor.RED + "Invalid amount!");
+            player.sendMessage(ChatColor.RED + "Invalid amount! Please enter a valid number.");
             return true;
         }
 
@@ -63,26 +67,34 @@ public class ConvertCommand implements CommandExecutor {
         double rate = plugin.getConfig().getDouble("economy.conversion." + type, 1.0);
         double convertedAmount = amount * rate;
 
-        // Update points
-        switch (type) {
-            case "kill" -> data.setKillPoints(data.getKillPoints() - amount);
-            case "mine" -> data.setMinePoints(data.getMinePoints() - amount);
-            case "build" -> data.setBuildPoints(data.getBuildPoints() - amount);
+        try {
+            switch (type) {
+                case "kill" -> data.setKillPoints(data.getKillPoints() - amount);
+                case "mine" -> data.setMinePoints(data.getMinePoints() - amount);
+                case "build" -> data.setBuildPoints(data.getBuildPoints() - amount);
+            }
+
+            if (!plugin.getEconomyManager().deposit(player, convertedAmount)) {
+                player.sendMessage(ChatColor.RED + "Failed to deposit money to your account!");
+                return true;
+            }
+
+            player.sendMessage(String.format(
+                    "%sConverted %s%d %s points %sto %s$%.2f",
+                    ChatColor.GREEN,
+                    ChatColor.YELLOW,
+                    amount,
+                    type,
+                    ChatColor.GREEN,
+                    ChatColor.YELLOW,
+                    convertedAmount
+            ));
+        } catch (IllegalArgumentException e) {
+            player.sendMessage(ChatColor.RED + "Error: " + e.getMessage());
+        } catch (Exception e) {
+            player.sendMessage(ChatColor.RED + "An unexpected error occurred: " + e.getMessage());
+            plugin.getLogger().warning("Error in ConvertCommand: " + e.getMessage());
         }
-
-        // Add to economy
-        plugin.getEconomyManager().deposit(player, convertedAmount);
-
-        player.sendMessage(String.format(
-                "%sConverted %s%d %s points %sto %s$%.2f",
-                ChatColor.GREEN,
-                ChatColor.YELLOW,
-                amount,
-                type,
-                ChatColor.GREEN,
-                ChatColor.YELLOW,
-                convertedAmount
-        ));
 
         return true;
     }

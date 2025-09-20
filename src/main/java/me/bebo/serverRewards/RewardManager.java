@@ -6,12 +6,13 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class RewardManager {
     private final ServerRewards plugin;
-    private final Map<UUID, Long> cooldowns = new HashMap<>();
-    private final Map<String, ItemStack> itemTemplates = new HashMap<>();
+    private final Map<UUID, Long> cooldowns = new ConcurrentHashMap<>();
+    private final Map<String, ItemStack> itemTemplates = new ConcurrentHashMap<>();
 
     public RewardManager(ServerRewards plugin) {
         this.plugin = plugin;
@@ -166,12 +167,53 @@ public class RewardManager {
 
         for (String command : plugin.getConfig().getStringList(path + ".commands")) {
             try {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-                        command.replace("{player}", safePlayerName));
+                String sanitizedCommand = sanitizeCommand(command, safePlayerName);
+                if (isCommandAllowed(sanitizedCommand)) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), sanitizedCommand);
+                } else {
+                    plugin.getLogger().warning("Blocked potentially dangerous command: " + command);
+                }
             } catch (Exception e) {
-                plugin.getLogger().warning("Failed to execute reward command: " + command);
+                plugin.getLogger().warning("Failed to execute reward command: " + command + " - " + e.getMessage());
             }
         }
+    }
+
+    private String sanitizeCommand(String command, String playerName) {
+        String sanitized = command.replace("{player}", playerName);
+        
+        String[] dangerousCommands = {
+            "op", "deop", "ban", "kick", "stop", "reload", "restart", 
+            "give command_block", "give barrier", "give structure_block",
+            "give jigsaw_block", "give debug_stick", "give knowledge_book",
+            "execute", "function", "schedule", "forceload", "setblock",
+            "fill", "clone", "summon", "tp", "teleport", "spawnpoint",
+            "setworldspawn", "weather", "time", "difficulty", "gamerule"
+        };
+        
+        for (String dangerous : dangerousCommands) {
+            if (sanitized.toLowerCase().startsWith(dangerous.toLowerCase())) {
+                throw new SecurityException("Dangerous command blocked: " + dangerous);
+            }
+        }
+        
+        return sanitized;
+    }
+
+    private boolean isCommandAllowed(String command) {
+        String[] allowedCommands = {
+            "give", "effect", "enchant", "title", "tellraw", "playsound",
+            "particle", "weather", "time", "gamemode", "fly", "speed",
+            "heal", "feed", "repair", "clear", "xp", "experience"
+        };
+        
+        for (String allowed : allowedCommands) {
+            if (command.toLowerCase().startsWith(allowed.toLowerCase())) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     private void notifyPlayer(Player player, String itemName, int price) {

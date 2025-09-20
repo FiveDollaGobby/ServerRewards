@@ -29,7 +29,6 @@ public class RewardCommand implements CommandExecutor {
         Player player = (Player) sender;
         String type = args[0].toLowerCase();
 
-        // Reward logic here
         return true;
     }
 }

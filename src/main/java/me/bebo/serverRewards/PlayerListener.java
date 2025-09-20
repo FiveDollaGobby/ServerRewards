@@ -9,7 +9,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.InventoryView;
-import org.bukkit.inventory.ItemStack; // Added missing import
+import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
     private final ServerRewards plugin;
